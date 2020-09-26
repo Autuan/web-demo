@@ -2,6 +2,10 @@ package com.autuan.webdemo.project.controller;
 
 import com.autuan.webdemo.project.aop.Log;
 import com.autuan.webdemo.project.ennum.BusinessType;
+import com.autuan.webdemo.project.entity.ReqVO;
+import com.autuan.webdemo.project.entity.ResDTO;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @description :  描述
  * @remark : 备注
  * @date : 2020/9/24 21:33
- * @company : 上海奥若拉信息科技集团有限公司
  */
 @RestController
 @RequestMapping("/logAop")
@@ -20,9 +23,19 @@ public class WebDemoController {
     public Object create(){
         return "create";
     }
+
     @RequestMapping("/read")
     @Log(title = "read 方法 title",businessType =  BusinessType.OTHER)
     public Object read(String readId){
         return "read";
+    }
+
+    @PostMapping("/update")
+    @Log(title = "update方法",businessType = BusinessType.UPDATE)
+    public Object update(@RequestBody ReqVO reqVO) {
+        String reqId = reqVO.getReqId();
+        return ResDTO.builder()
+                .responseId("hello,Autuan")
+                .build();
     }
 }
