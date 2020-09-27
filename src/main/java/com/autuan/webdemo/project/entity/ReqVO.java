@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 /**
  * @author : Autuan.Yu
  * @description :  描述
@@ -18,4 +20,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ReqVO {
     private String reqId;
+    private List<String> reqList;
 }

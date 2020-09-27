@@ -1,6 +1,10 @@
 package com.autuan.webdemo.project.aop;
 
+import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.json.JSON;
+import cn.hutool.json.JSONArray;
+import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.autuan.webdemo.project.ennum.BusinessType;
 import com.autuan.webdemo.util.ServletUtils;
@@ -11,7 +15,6 @@ import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -24,6 +27,7 @@ import java.io.InputStream;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * 操作日志记录处理
@@ -53,8 +57,8 @@ public class LogAspect {
             Signature signature = pjp.getSignature();
             MethodSignature methodSignature = (MethodSignature) signature;
             Method method = methodSignature.getMethod();
-            Log logAnoo = method.getAnnotation(Log.class);
-            String title = logAnoo.title();
+            Log logAnnooation = method.getAnnotation(Log.class);
+            String title = logAnnooation.title();
 
             String url = request.getRequestURL().toString();
             String httpMethod = request.getMethod();
@@ -63,6 +67,17 @@ public class LogAspect {
             //重点 这里就是获取@RequestBody参数的关键  调试的情况下 可以看到o变量已经获取到了请求的参数
             Object[] requestBodyObjArray = pjp.getArgs();
             String queryBody = JSONUtil.toJsonStr(requestBodyObjArray);
+            // 要从请求参数里拿取的KEY
+            String key = "reqId";
+            String fieldValue = null;
+            for (Object reqObj : requestBodyObjArray) {
+                Object fieldValueObj = ReflectUtil.getFieldValue(reqObj, key);
+                if (null != fieldValueObj) {
+                    fieldValue = String.valueOf(fieldValueObj);
+                    break;
+                }
+            }
+            System.out.println("query body 内含参数 ---> " + fieldValue);
             String targetStr = pjp.getSignature().toString();
             String responseStr = JSONUtil.toJsonStr(result);
             System.out.println("请求--- >url");
