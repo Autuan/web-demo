@@ -2,26 +2,15 @@ package com.autuan.webdemo.project.ennum;
 
 /**
  * 业务操作类型
- * 
+ *
  * @author ruoyi
  *
  */
-public enum BusinessType
-{
+public enum BusinessType {
     /**
-     * 其它
+     * 清空数据
      */
-    OTHER,
-
-    /**
-     * 新增
-     */
-    INSERT,
-
-    /**
-     * 修改
-     */
-    UPDATE,
+    CLEAN,
 
     /**
      * 删除
@@ -29,19 +18,9 @@ public enum BusinessType
     DELETE,
 
     /**
-     * 授权
-     */
-    GRANT,
-
-    /**
      * 导出
      */
     EXPORT,
-
-    /**
-     * 导入
-     */
-    IMPORT,
 
     /**
      * 强退
@@ -52,9 +31,29 @@ public enum BusinessType
      * 生成代码
      */
     GENCODE,
-    
+
     /**
-     * 清空数据
+     * 授权
      */
-    CLEAN,
+    GRANT,
+
+    /**
+     * 导入
+     */
+    IMPORT,
+
+    /**
+     * 新增
+     */
+    INSERT,
+
+    /**
+     * 其它
+     */
+    OTHER,
+
+    /**
+     * 修改
+     */
+    UPDATE,
 }
