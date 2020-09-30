@@ -5,7 +5,7 @@
 
 ### 知识点
 ### aop及注解的简单demo
-学习这方面的知识可以访问[这篇博客]()
+学习这方面的知识可以访问[这篇博客](http://autuan.top/2020/09/30/2020-09-30-annoation/)
 涉及到的文件：  
 ..\src\main\java\com\autuan\webdemo\project\aop\MyAnnotation   
 ..\src\main\java\com\autuan\webdemo\project\aop\MyAnnotationAspect  
