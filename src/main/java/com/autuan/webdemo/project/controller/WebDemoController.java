@@ -1,6 +1,7 @@
 package com.autuan.webdemo.project.controller;
 
 import com.autuan.webdemo.project.aop.Log;
+import com.autuan.webdemo.project.aop.MyAnnotation;
 import com.autuan.webdemo.project.ennum.BusinessType;
 import com.autuan.webdemo.project.entity.ReqVO;
 import com.autuan.webdemo.project.entity.ResDTO;
@@ -30,12 +31,13 @@ public class WebDemoController {
         return "read";
     }
 
-    @PostMapping("/update")
-    @Log(title = "update方法",businessType = BusinessType.UPDATE)
-    public Object update(@RequestBody ReqVO reqVO) {
-        String reqId = reqVO.getReqId();
+    @RequestMapping("/update")
+    @MyAnnotation(msg = "this is msg",title = "hello,autuan")
+    public Object update() {
         return ResDTO.builder()
                 .responseId("hello,Autuan")
                 .build();
     }
+
+
 }
