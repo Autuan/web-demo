@@ -5,6 +5,7 @@ import com.autuan.webdemo.project.aop.MyAnnotation;
 import com.autuan.webdemo.project.ennum.BusinessType;
 import com.autuan.webdemo.project.entity.ReqVO;
 import com.autuan.webdemo.project.entity.ResDTO;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/logAop")
 public class WebDemoController {
+
     @RequestMapping("/create")
     @Log(title = "create 方法 title",businessType =  BusinessType.INSERT)
     public Object create(){
@@ -28,7 +30,7 @@ public class WebDemoController {
     @RequestMapping("/read")
     @Log(title = "read 方法 title",businessType =  BusinessType.OTHER)
     public Object read(String readId){
-        return "read";
+        return "read : ";
     }
 
     @RequestMapping("/update")
