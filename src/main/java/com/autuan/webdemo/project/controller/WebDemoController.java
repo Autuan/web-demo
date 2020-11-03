@@ -40,6 +40,4 @@ public class WebDemoController {
                 .responseId("hello,Autuan")
                 .build();
     }
-
-
 }
