@@ -1,0 +1,11 @@
+server:
+  port: 8008
+
+# 客服对象定义
+# 用于演示配置信息注入至对象
+custom:
+  service:
+    mobile1: 18800006666
+    mobile2: 16600008888
+    address: 中国上海
+    email: autuan.yu@gmail.com

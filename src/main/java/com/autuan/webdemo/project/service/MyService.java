@@ -7,4 +7,8 @@ package com.autuan.webdemo.project.service;
  * @copyright: Toplist
  */
 public interface MyService {
+    /**
+     *   配置文件信息
+     */
+    void configBeanUse();
 }
