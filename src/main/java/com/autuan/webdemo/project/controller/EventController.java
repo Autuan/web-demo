@@ -18,4 +18,11 @@ public class EventController {
     public String doOneThing(){
         return eventService.oneThing();
     }
+
+    @RequestMapping("/sendRedisEvent")
+    @ResponseBody
+    public Object sendRedisEvent(){
+        eventService.sendRedisEvent();
+        return "success";
+    }
 }
