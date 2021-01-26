@@ -17,4 +17,9 @@ public class MyController {
         myService.configBeanUse();
         return "hello autuan";
     }
+
+    @RequestMapping("/send")
+    public Object send(){
+        return "send";
+    }
 }
